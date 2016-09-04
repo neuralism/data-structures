@@ -1,7 +1,7 @@
 # Personal Notes
 
 ### Brief
-Make a request for each of the ten 'Meeting List Agenda' pages for Manhattan and save the body as a text file to our 'local' environment in Cloud9.
+Make a request for each of the ten 'Meeting List Agenda' pages for Manhattan and save the body as a text file to our 'local' environment in Cloud9 (using Node.js).
 
 http://visualizedata.github.io/datastructures/data/m01.html
 http://visualizedata.github.io/datastructures/data/m02.html
@@ -108,7 +108,7 @@ request(requestPath, function(error, response, body) {
 ```
 Notice that `fs.writeFileSync()` has a `Sync()` at the back. This implies that this method is synchronous instead of asynchronous. All `fs` methods have both an asynchronous version e.g. `fs.writeFile()`, and a synchronous version e.g. `fs.writeFileSync()`. The asynchronous version comes with a callback function `fs.writeFile(file, data, callback)` which will be called 'at a later time' after the operation is complete. The synchronous version does not have the callback function `fs.writeFileSync(file, data)` and will not let you run the next line of code until the current operation is complete.
 
-Lastly, we create a function called `importAllContent()` which contains a `for loop` that loops ten times and passes in the loop index into `importContent()`.
+Next, we can create a function called `importAllContent()` which contains a `for loop` that loops ten times and passes in the loop index into `importContent()`.
 
 ```js
 function importAllContent() {
@@ -117,7 +117,7 @@ function importAllContent() {
   }
 }
 ```
-And execute `importAllContent()` for the whole thing to run:
+And lastly, execute `importAllContent()` for the whole thing to run:
 
 ```js
 importAllContent();
