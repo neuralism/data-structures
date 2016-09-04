@@ -104,7 +104,7 @@ fs.writeFileSync(writePath, body);
 ```
 Notice that `fs.writeFileSync()` has a `Sync()` at the back. This implies that this method is synchronous instead of asynchronous. All `fs` methods have both an asynchronous version e.g. `fs.writeFile()`, and a synchronous version e.g. `fs.writeFileSync()`. The asynchronous version comes with a callback function `fs.writeFile(file, data, callback)` which you call 'at a later time' after the operation is complete and the synchronous version does not have the callback `fs.writeFileSync(file, data)` and will not let you run the next line of code until the current operation is complete.
 
-Lastly, we create a function called `importAllContent()` which contains a for loop that loops ten times and passes in the loop index into `importContent()`.
+Lastly, we create a function called `importAllContent()` which contains a `for loop` that loops ten times and passes in the loop index into `importContent()`.
 
 ```js
 function importAllContent() {
