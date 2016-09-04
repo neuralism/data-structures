@@ -18,7 +18,7 @@ http://visualizedata.github.io/datastructures/data/m10.html
 
 - Node.js is a JavaScript runtime written in C++ that enables us to run JavaScript code on the server or our computer instead of just the browser.
 - A runtime in this case is the code that runs the JavaScript code, it is typically written in lower-level language like C++ or C and compiles the JavaScript code into machine code.
-- Machine code is code used by the hardware like binary code. The lower the level the language the closer it is to machine code and the higher the level the language the more abstracted it is from it.
+- Machine code is the code used by the hardware like binary code. The lower the level the language the closer it is to machine code and the higher the level the language the more abstracted it is from it.
 - Node.js uses Chrome's V8 JavaScript engine to run JavaScript code.
 
 ### Features of Node.js
