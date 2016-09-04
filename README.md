@@ -1,7 +1,7 @@
 # Personal Notes
 
 ### Brief
-Make a request for each of the ten "Meeting List Agenda" pages for Manhattan and save the body as a text file to wer "local" environment in Cloud9 
+Make a request for each of the ten "Meeting List Agenda" pages for Manhattan and save the body as a text file to wer "local" environment in Cloud9
 
 http://visualizedata.github.io/datastructures/data/m01.html
 http://visualizedata.github.io/datastructures/data/m02.html
