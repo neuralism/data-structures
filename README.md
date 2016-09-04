@@ -74,52 +74,33 @@ function importContent(index) {
 }
 ```
 
-But before we put in `request()` and `fs.writeFileSync()`, we need to first generate the file title so that we can add it into the read and write path. We can use the loop index to help us define the file title (with leading zero) using the tenary operator:
+But before we put in `request()` and `fs.writeFileSync()`, we need to first generate the file title so that we can add it into the read and write path. We can use the loop index that has been passed into the function to help us define the file title (with leading zero) using the tenary operator:
 
 ```js
-function importContent(index) {
-  var fileTitle = index < 9 ? 'm0' + (index + 1) : 'm' + (index + 1); // 'm01' to 'm10'
-}
+var fileTitle = index < 9 ? 'm0' + (index + 1) : 'm' + (index + 1); // 'm01' to 'm10'
 ```
 
 Next, we will use the defined file titles to generate the path we need for the request and file writing:
 
 ```js
-function importContent(index) {
-  var fileTitle = index < 9 ? 'm0' + (index + 1) : 'm' + (index + 1);
-  var requestPath = 'http://visualizedata.github.io/datastructures/data/' + fileTitle + '.html';
-  var writePath = '/home/ubuntu/workspace/data/' + fileTitle + '.txt';
-}
+var requestPath = 'http://visualizedata.github.io/datastructures/data/' + fileTitle + '.html';
+var writePath = '/home/ubuntu/workspace/data/' + fileTitle + '.txt';
 ```
 
 Next, we will pass `requestPath` into `request()` which is the URL it takes as the first argument and calls a callback function once the `request()` operation is complete. When the callback function is called, it will store all the contents of the URL into `body` as a string:
 
 ```js
-function importContent(index) {
-  var fileTitle = index < 9 ? 'm0' + (index + 1) : 'm' + (index + 1)l
-  var requestPath = 'http://visualizedata.github.io/datastructures/data/' + fileTitle + '.html';
-  var writePath = '/home/ubuntu/workspace/data/' + fileTitle + '.txt';
-  request(requestPath, function(error, response, body) {
-    if (!error && response.statusCode == 200) {
+request(requestPath, function(error, response, body) {
+  if (!error && response.statusCode == 200) {
   
-    } else { console.error('request failed') }
-  })
-}
+  } else { console.error('request failed') }
+})
 ```
 
 Next, we will use `fs.writeFileSync()` to write the `body` into a text file on `writePath`.
 
 ```js
-function importContent(index) {
-  var fileTitle = index < 9 ? 'm0' + (index + 1) : 'm' + (index + 1);
-  var requestPath = 'http://visualizedata.github.io/datastructures/data/' + fileTitle + '.html';
-  var writePath = '/home/ubuntu/workspace/data/' + fileTitle + '.txt';
-  request(requestPath, function(error, response, body) {
-    if (!error && response.statusCode == 200) {
-      fs.writeFileSync(writePath, body);
-    } else { console.error('request failed') }
-  })
-}
+fs.writeFileSync(writePath, body);
 ```
 Notice that `fs.writeFileSync()` has a `Sync()` at the back. This implies that this method is synchronous instead of asynchronous. All `fs` methods have both an asynchronous version e.g. `fs.writeFile()`, and a synchronous version e.g. `fs.writeFileSync()`. The asynchronous version comes with a callback function `fs.writeFile(file, data, callback)` which you call 'at a later time' after the operation is complete and the synchronous version does not have the callback `fs.writeFileSync(file, data)` and will not let you run the next line of code until the current operation is complete.
 
