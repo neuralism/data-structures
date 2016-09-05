@@ -14,7 +14,7 @@ http://visualizedata.github.io/datastructures/data/m08.html
 http://visualizedata.github.io/datastructures/data/m09.html
 http://visualizedata.github.io/datastructures/data/m10.html
 
-### Understanding Node.js and how it works
+### Trying to understand what Node.js is and how it works
 
 - Node.js is a JavaScript runtime written in C++ that enables us to run JavaScript code on the server or our computer instead of just the browser.
 - A runtime in this case is the code that runs the JavaScript code, it is typically written in lower-level language like C++ or C which compiles the JavaScript code into machine code.
@@ -66,7 +66,7 @@ Next, we can load the `fs` (file system) module using `require()` as well to giv
 var fs = require('fs');
 ```
 
-`request()` and `fs.writeFileSync` can be placed in a function called `importContent()` which will later be placed in a `for loop` and takes the loop index as an argument:
+`request()` and `fs.writeFileSync()` can be placed in a function called `importContent()` which will later be placed in a `for loop` and takes the loop index as an argument:
 
 ```js
 function importContent(index) {
@@ -97,7 +97,7 @@ request(requestPath, function(error, response, body) {
 })
 ```
 
-We will then use `fs.writeFileSync()` to write the `body` into a text file on `writePath`.
+We will then use `fs.writeFileSync()` to write the `body` into a text file in `writePath`.
 
 ```js
 request(requestPath, function(error, response, body) {
