@@ -66,7 +66,7 @@ Next, we can load the `fs` (file system) module using `require()` as well to giv
 var fs = require('fs');
 ```
 
-`request()` and `fs.writeFileSync()` can be placed in a function called `importContent()` which will later be placed in a `for loop` and takes the loop index as an argument:
+`request()` and `fs.writeFileSync()` can be placed in a function called `importContent()` which will later be placed in a `for loop` and takes the iterator as an argument:
 
 ```js
 function importContent(index) {
@@ -74,7 +74,7 @@ function importContent(index) {
 }
 ```
 
-But before we place `request()` and `fs.writeFileSync()` into the function, we first need to generate the file title so that we can add it into the read and write file path. We can use the loop index that has been passed into the function to help us define the file title (with leading zero) using the ternary operator:
+But before we place `request()` and `fs.writeFileSync()` into the function, we first need to generate the file title so that we can add it into the read and write file path. We can use the iterator that has been passed into the function to help us define the file title (with leading zero) using the ternary operator:
 
 ```js
 var fileTitle = index < 9 ? 'm0' + (index + 1) : 'm' + (index + 1); // 'm01' to 'm10'
@@ -108,7 +108,7 @@ request(requestPath, function(error, response, body) {
 ```
 Notice that `fs.writeFileSync()` has a `Sync()` at the back. This implies that this method is synchronous instead of asynchronous. All `fs` methods have both an asynchronous version e.g. `fs.writeFile()`, and a synchronous version e.g. `fs.writeFileSync()`. The asynchronous version comes with a callback function `fs.writeFile(file, data, callback)` which will be called 'at a later time' after the operation is complete. The synchronous version does not have the callback function `fs.writeFileSync(file, data)` and will not let you run the next line of code until the current operation is complete.
 
-Next, we can create a function called `importAllContent()` which contains a `for loop` that loops ten times and passes in the loop index into `importContent()`.
+Next, we can create a function called `importAllContent()` which contains a `for loop` that loops ten times and passes in the iterator into `importContent()`.
 
 ```js
 function importAllContent() {
