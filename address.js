@@ -17,7 +17,7 @@ $('div table tbody tr').each(function(i, elem) {
 // loop to extract the address and store them into the address array
 for (var i = 0; i < data.length; i++) {
     address.push(data[i]
-        // stores substrings separated by a line break '\n' into an array and selects array item [3] which contains the address and some additional info
+        // stores all substrings separated by a line break '\n' into an array and selects array item [3] which contains the address and some additional info
         .split('\n')[3]
         // stores all substrings separated by a ',' into an array and selects array item [0] which is the address itself
         .split(',')[0]
