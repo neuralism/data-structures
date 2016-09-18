@@ -1,7 +1,7 @@
 var fs = require('fs');
 var cheerio = require('cheerio');
 
-var content = fs.readFileSync('/home/ubuntu/workspace/data/m01.txt');
+var content = fs.readFileSync('/home/ubuntu/workspace/week2/data/m01.txt');
 
 var $ = cheerio.load(content);
 var data = [];
