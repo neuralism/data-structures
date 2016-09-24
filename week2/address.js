@@ -33,29 +33,3 @@ for (var i = 0; i < data.length; i++) {
 for (var i = 0; i < address.length; i++) {
     console.log(address[i]);
 }
-
-/* 
-Output:
-20 Cardinal Hayes Place
-20 Cardinal Hayes Place
-29 Mott Street
-49 Fulton Street
-44 John Street
-49 Fulton Street
-20 Cardinal Hayes Place
-22 Barclay Street
-20 Cardinal Hayes Place
-22 Barclay Street
-283 West Broadway
-125 Barclay Street
-49 Fulton Street
-49 Fulton Street
-20 Cardinal Hayes Place
-283 West Broadway
-49 Fulton Street
-22 Barclay Street
-20 Cardinal Hayes Place
-283 West Broadway
-283 West Broadway
-283 W. Broadway
-*/
