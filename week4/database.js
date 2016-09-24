@@ -22,6 +22,7 @@ MongoClient.connect(url, function(err, db) {
     // Loop to insert each meeting into the collection
     for (var i = 0; i < meetings_data.length; i++) {
         collection.insert({
+            name: "",
             address: meetings_data[i].address,
             location: meetings_data[i].latLong,
             meeting: "",
