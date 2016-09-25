@@ -25,7 +25,7 @@ MongoClient.connect(url, function(err, db) {
             name: "",
             address: meetings_data[i].address,
             location: meetings_data[i].latLong,
-            meeting: "",
+            meeting: ""
         });
     }
     
