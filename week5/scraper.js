@@ -58,7 +58,7 @@ function convertTo24Hour(time) {
     return Number(hours + minutes);
 }
 
-//console.log(meetings);
+// console.log(meetings);
 
 // cycle through the object and request for its latLong using GMAPS API
 // used async.eachObject instead of async.eachSeries
