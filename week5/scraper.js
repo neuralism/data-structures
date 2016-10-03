@@ -5,29 +5,27 @@ var request = require('request');
 var async = require('async');
 var asyncEachObject = require('async-each-object')
 
-// address variables
+// variables
 var content = fs.readFileSync('/home/ubuntu/workspace/week5/data/m01.txt');
 var $ = cheerio.load(content);
-
-// SETTING ENVIRONMENT VARIABLES (in Linux):
-// export NEW_VAR="Content of NEW_VAR variable"
-// printenv | grep NEW_VAR
 var apiKey = process.env.GMAKEY;
 var meetings = [];
 
-// select 'hours' column and run the script through each row
+// select the table and run the script through every row
 $('tbody tr').each(function(i, elem) {
-    // split every individual meeting into an array and remove initial trailing whitespace
+    // split every individual meeting into an array (as they are seperated by 2 <br>s) and remove initial 'trailing whitespace'
     var data = $(elem).find('td').eq(1).html().replace('\r\n                    \t\t\r\n\t\t\t\t\t', '').split('<br>\r\n                    \t<br>');
-    // loop through each item in an array
+    // loop through each item in the array
     for (var i = 0; i < data.length; i++) {
-        // ignore items which are blank
+        // ignore items which are blank (because the split function also ropes the whitespace that comes after the split into the array)
         if (data[i] !== '') {
-            // further cleaning up - remove new line, carriage return, tab characters, forward slahes, <br>s, and <b>s
+            // further cleaning up - remove new line, carriage return, tab characters, forward slashes, <br>s, and <b>s
             var text = data[i].replace(/[\r\n\t\/]/g, '').replace(/(<br>)/g, '').replace(/(<b>)/g, '');
             
-            // meeting object to hold meeting info
+            // declare meeting object to hold meeting info
             var meeting = new Object;
+            
+            // assign the info to the object
             meeting.address = $(elem).find('td').eq(0).html().split('\n')[3].split(',')[0].split('- ')[0].split('(')[0].trim() + ', New York, NY';
             meeting.days = text.split('From')[0].trim();
             meeting.start = convertTo24Hour(text.split('From')[1].split('to')[0].trim());
@@ -47,7 +45,7 @@ $('tbody tr').each(function(i, elem) {
     }
 });
 
-// convert 12-hour time to 24-hour time
+// convert 12-hour clock to 24-hour clock
 function convertTo24Hour(time) {
     var hours = time.split(':')[0];
     var minutes = time.split(':')[1].split(' ')[0];
@@ -60,13 +58,13 @@ function convertTo24Hour(time) {
 
 // console.log(meetings);
 
-// cycle through the object and request for its latLong using GMAPS API
+// cycle through the object and request for each meeting's latLong using GMAPS API
 // used async.eachObject instead of async.eachSeries
 async.eachObject(meetings, function(value, key, callback) {
     var apiRequest = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + value.address.split(' ').join('+') + '&key=' + apiKey;
     request(apiRequest, function(err, resp, body) {
         if (err) { throw err; }
-        // assign latlong data to current meeting object
+        // assign latLong data to current meeting object
         value.latLong = JSON.parse(body).results[0].geometry.location;
     });
     // not sure but I think the the callback delay isn't working because the data came out immediately
