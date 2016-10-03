@@ -21,24 +21,19 @@ $('tbody tr').each(function(i, elem) {
         if (data[i] !== '') {
             // further cleaning up - remove new line, carriage return, tab characters, forward slashes, <br>s, and <b>s
             var text = data[i].replace(/[\r\n\t\/]/g, '').replace(/(<br>)/g, '').replace(/(<b>)/g, '');
-            
             // declare meeting object to hold meeting info
             var meeting = new Object;
-            
             // assign the info to the object
             meeting.address = $(elem).find('td').eq(0).html().split('\n')[3].split(',')[0].split('- ')[0].split('(')[0].trim() + ', New York, NY';
             meeting.days = text.split('From')[0].trim();
             meeting.start = convertTo24Hour(text.split('From')[1].split('to')[0].trim());
             meeting.end = convertTo24Hour(text.split('From')[1].split('to')[1].split('Meeting Type')[0].trim());
             meeting.type = text.split('Meeting Type')[1].split('=')[0].trim();
-            
             // assign special interest info - if special interest doesn't exist then set 'interest' to null 
-            if (text.indexOf('Special Interest') !== -1) {
+            if (text.indexOf('Special Interest') !== -1)
                 meeting.interest = text.split('Special Interest')[1].trim();
-            } else {
+            else
                 meeting.interest = null;
-            }
-            
             // push meeting object into meetings array
             meetings.push(meeting);
         }
@@ -56,10 +51,7 @@ function convertTo24Hour(time) {
     return Number(hours + minutes);
 }
 
-// console.log(meetings);
-
-// cycle through the object and request for each meeting's latLong using GMAPS API
-// used async.eachObject instead of async.eachSeries
+// cycle through the object (using async.echObject instead of async.eachSeries) and request for each meeting's latLong using GMAPS API
 async.eachObject(meetings, function(value, key, callback) {
     var apiRequest = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + value.address.split(' ').join('+') + '&key=' + apiKey;
     request(apiRequest, function(err, resp, body) {
