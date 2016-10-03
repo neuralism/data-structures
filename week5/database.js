@@ -15,7 +15,6 @@ var MongoClient = require('mongodb').MongoClient; // npm install mongodb
 MongoClient.connect(url, function(err, db) {
     if (err) { return console.dir(err); }
     var collection = db.collection('meetings');
-    
     // Loop to insert each meeting into the collection
     for (var i = 0; i < meetings_data.length; i++) {
         collection.insert({
@@ -28,6 +27,5 @@ MongoClient.connect(url, function(err, db) {
             interest: meetings_data[i].interest
         });
     }
-    
     db.close();
 });
