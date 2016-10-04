@@ -1,5 +1,3 @@
-# Personal Notes
-
 ### Aggregation results
 
 ```
