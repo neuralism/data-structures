@@ -8,6 +8,19 @@
 { "_id" : ObjectId("57f23f67484c1594631ab31a"), "address" : "283 West Broadway, New York, NY", "latLong" : { "lat" : 40.7208017, "lng" : -74.0048389 }, "days" : "Tuesdays", "start" : 1945, "end" : 2045, "type" : "C", "interest" : "Young People" }
 ```
 
+### Data model
+```
+collection.insert({
+    address: meetings_data[i].address,
+    latLong: meetings_data[i].latLong,          
+    days: meetings_data[i].days,
+    start: meetings_data[i].start,
+    end: meetings_data[i].end,
+    type: meetings_data[i].type,
+    interest: meetings_data[i].interest
+});
+```
+
 ### aa_database output
 
 ```
