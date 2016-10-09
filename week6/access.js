@@ -41,35 +41,10 @@ MongoClient.connect(url, function(err, db) {
                 }]
             }];
             
-            //console.log(meetings[0]);
+            console.log(meetings[0]);
             console.log(meetings[0].deets[0].days);
         }
         db.close();
     });
 
 });
-
-/*
-
-var meetings = [{
-            "_id": {
-                "loca": [40.7355145, -74.0031001]
-            },
-            "meets": [{
-                "meetingName": "PERRY STREET WORKSHOP",
-                "meetingHouse": "",
-                "meetingAddress1": "50 Perry Street, Ground Floor,",
-                "meetingAddress2": "(Betw. 7th Avenue South &amp; West 4th Street) NY 10014",
-                "borough": "Manhattan",
-                "meetingDetails": "No 8:30 or 10:15 1st Wed of month due to Bus. meeting Wed.10:15pm=No BB 1st Wed.",
-                "meetingWheelchair": ""
-            }],
-            "deets": [{
-                "days": ["Tuesdays", "Tuesdays", "Tuesdays", "Tuesdays", "Tuesdays", "Tuesdays", "Tuesdays", "Tuesdays"],
-                "startTimes": ["7:30 AM", "9:00 AM", "12:15 PM", "2:30 PM", "4:00 PM", "6:00 PM", "8:30 PM", "10:15 PM"],
-                "meetingType": ["C", "C", "S", "C", "C", "C", "C", "C"],
-                "specialInterest": ["", "", "", "", "", "", "", ""]
-            }]
-        }];
-
-*/
