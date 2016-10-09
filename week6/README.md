@@ -1,3 +1,28 @@
+### Reogranised for accessibility
+```
+console.log(meetings[0]);
+
+{
+    _id: { 
+        location: { lat: 40.7355145, lng: -74.0031001 } 
+    },
+    meets: [{ 
+        address: '50 Perry Street, New York, NY' 
+    }],
+    deets: [{ 
+        days: [Object],
+        start: [Object],
+        type: [Object],
+        interest: [Object] 
+    }]
+}
+```
+```
+console.log(meetings[0].deets[0].days);
+
+['Wednesdays', 'Tuesdays', 'Mondays', 'Sundays', 'Saturdays', 'Fridays', 'Thursdays', 'Thursdays', 'Wednesdays', 'Tuesdays', 'Mondays', 'Sundays', 'Fridays', 'Saturdays', 'Fridays', 'Sundays', 'Saturdays', 'Fridays', 'Thursdays', 'Wednesdays', 'Tuesdays', 'Mondays', 'Sundays', 'Saturdays', 'Fridays', 'Thursdays', 'Tuesdays', 'Mondays', 'Wednesdays', 'Sundays', 'Mondays', 'Saturdays', 'Thursdays', 'Wednesdays', 'Tuesdays', 'Fridays', 'Thursdays', 'Mondays', 'Saturdays', 'Sundays', 'Fridays', 'Wednesdays', 'Tuesdays', 'Thursdays', 'Tuesdays', 'Mondays', 'Saturdays', 'Sundays', 'Thursdays', 'Fridays', 'Wednesdays', 'Tuesdays', 'Mondays', 'Thursdays', 'Wednesdays', 'Sundays', 'Saturdays', 'Fridays', 'Wednesdays', 'Tuesdays', 'Mondays', 'Sundays', 'Saturdays', 'Fridays', 'Thursdays', 'Thursdays', 'Wednesdays', 'Tuesdays', 'Mondays', 'Sundays', 'Fridays', 'Saturdays', 'Fridays', 'Sundays', 'Saturdays', 'Fridays', 'Thursdays', 'Wednesdays', 'Tuesdays', 'Mondays', 'Sundays', 'Saturdays', 'Fridays', 'Thursdays', 'Tuesdays', 'Mondays', 'Wednesdays', 'Sundays', 'Mondays', 'Saturdays', 'Thursdays', 'Wednesdays', 'Tuesdays', 'Fridays', 'Thursdays', 'Mondays', 'Saturdays', 'Sundays', 'Fridays', 'Wednesdays', 'Tuesdays', 'Thursdays', 'Tuesdays', 'Mondays', 'Saturdays', 'Sundays', 'Thursdays', 'Fridays', 'Wednesdays', 'Tuesdays', 'Mondays', 'Thursdays', 'Wednesdays', 'Sundays', 'Saturdays', 'Fridays']
+```
+
 ### Aggregation results
 
 ```
@@ -23,47 +48,6 @@
 { "_id" : ObjectId("57f98d5c0a98bd271755aa3f"), "address" : "12 West 12th Street, New York, NY", "latLong" : { "lat" : 40.734504, "lng" : -73.995177 }, "days" : "Tuesdays", "start" : 1915, "end" : 2030, "type" : "C", "interest" : "Women" }
 { "_id" : ObjectId("57f98d5c0a98bd271755aa4d"), "address" : "10 East Union Square, New York, NY", "latLong" : { "lat" : 40.7347942, "lng" : -73.98953209999999 }, "days" : "Tuesdays", "start" : 1900, "end" : 2000, "type" : "OD", "interest" : "Special Purpose Groups" }
 Type "it" for more
-> it
-{ "_id" : ObjectId("57f98d5c0a98bd271755aa50"), "address" : "206-208 East 11th Street, New York, NY", "latLong" : { "lat" : 40.7308882, "lng" : -73.9881049 }, "days" : "Tuesdays", "start" : 2100, "end" : 2200, "type" : "OD", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755aa84"), "address" : "411 East 12th Street, New York, NY", "latLong" : { "lat" : 40.7298724, "lng" : -73.9827759 }, "days" : "Tuesdays", "start" : 1900, "end" : 800, "type" : "S", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755aa8e"), "address" : "411 East 12th Street, New York, NY", "latLong" : { "lat" : 40.7298724, "lng" : -73.9827759 }, "days" : "Tuesdays", "start" : 2030, "end" : 2130, "type" : "C", "interest" : "Living Sober" }
-{ "_id" : ObjectId("57f98d5c0a98bd271755aa9a"), "address" : "208 West 13th Street, New York, NY", "latLong" : { "lat" : 40.7380161, "lng" : -74.0011104 }, "days" : "Tuesdays", "start" : 1930, "end" : 2030, "type" : "OD", "interest" : "Gay, Lesbian and Bisexual" }
-{ "_id" : ObjectId("57f98d5c0a98bd271755aa9c"), "address" : "602 East 9th Street, New York, NY", "latLong" : { "lat" : 40.7260263, "lng" : -73.9801554 }, "days" : "Tuesdays", "start" : 1930, "end" : 2030, "type" : "BB", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755aaaf"), "address" : "303 West 42nd Street, New York, NY", "latLong" : { "lat" : 40.7576553, "lng" : -73.9899274 }, "days" : "Tuesdays", "start" : 2115, "end" : 2230, "type" : "S", "interest" : "Meditation" }
-{ "_id" : ObjectId("57f98d5c0a98bd271755aada"), "address" : "446 West 33rd Street, New York, NY", "latLong" : { "lat" : 40.7535422, "lng" : -73.9987837 }, "days" : "Tuesdays", "start" : 2000, "end" : 2100, "type" : "O", "interest" : "Gay, Lesbian and Bisexual" }
-{ "_id" : ObjectId("57f98d5c0a98bd271755aadb"), "address" : "252 West 46th Street, New York, NY", "latLong" : { "lat" : 40.7593263, "lng" : -73.98727389999999 }, "days" : "Tuesdays", "start" : 2115, "end" : 2215, "type" : "C", "interest" : "Special Purpose Groups" }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ab10"), "address" : "252 West 46th Street, New York, NY", "latLong" : { "lat" : 40.7593263, "lng" : -73.98727389999999 }, "days" : "Tuesdays", "start" : 2230, "end" : 2330, "type" : "C", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ab1a"), "address" : "303 West 42nd Street, New York, NY", "latLong" : { "lat" : 40.7576553, "lng" : -73.9899274 }, "days" : "Tuesdays", "start" : 1930, "end" : 2030, "type" : "BB", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ab55"), "address" : "484 West 43rd Street, New York, NY", "latLong" : { "lat" : 40.759952, "lng" : -73.9947467 }, "days" : "Tuesdays", "start" : 1900, "end" : 2000, "type" : "S", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ab68"), "address" : "252 West 46th Street, New York, NY", "latLong" : { "lat" : 40.7593263, "lng" : -73.98727389999999 }, "days" : "Tuesdays", "start" : 2000, "end" : 2100, "type" : "BB", "interest" : "Gay, Lesbian and Bisexual" }
-{ "_id" : ObjectId("57f98d5c0a98bd271755abf2"), "address" : "122 East 37th Street, New York, NY", "latLong" : { "lat" : 40.748323, "lng" : -73.97884499999999 }, "days" : "Tuesdays", "start" : 2000, "end" : 2100, "type" : "C", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ac1a"), "address" : "221 West 107th Street, New York, NY", "latLong" : { "lat" : 40.8018547, "lng" : -73.9663156 }, "days" : "Tuesdays", "start" : 1930, "end" : 2030, "type" : "B", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ac20"), "address" : "Central Park West &amp; 76th Street, New York, NY", "latLong" : { "lat" : 40.7848582, "lng" : -73.9696519 }, "days" : "Tuesdays", "start" : 2015, "end" : 2130, "type" : "C", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ac5d"), "address" : "125 West 104th Street, New York, NY", "latLong" : { "lat" : 40.798687, "lng" : -73.9649288 }, "days" : "Tuesdays", "start" : 1930, "end" : 2030, "type" : "O", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ac72"), "address" : "368 West End Ave, New York, NY", "latLong" : { "lat" : 40.7833129, "lng" : -73.9819042 }, "days" : "Tuesdays", "start" : 1930, "end" : 2030, "type" : "C", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ac77"), "address" : "207 West 96th Street, New York, NY", "latLong" : { "lat" : 40.7944661, "lng" : -73.9706389 }, "days" : "Tuesdays", "start" : 2200, "end" : 2300, "type" : "S", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ac83"), "address" : "164 West 74 Street, New York, NY", "latLong" : { "lat" : 40.7795103, "lng" : -73.98025559999999 }, "days" : "Tuesdays", "start" : 1900, "end" : 2000, "type" : "B", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ac95"), "address" : "263 West 86th Street, New York, NY", "latLong" : { "lat" : 40.7889383, "lng" : -73.97729029999999 }, "days" : "Tuesdays", "start" : 1900, "end" : 2000, "type" : "B", "interest" : null }
-Type "it" for more
-> it
-{ "_id" : ObjectId("57f98d5c0a98bd271755ac96"), "address" : "263 West 86th Street, New York, NY", "latLong" : { "lat" : 40.7889383, "lng" : -73.97729029999999 }, "days" : "Tuesdays", "start" : 1900, "end" : 2000, "type" : "BB", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755aca6"), "address" : "48 East 80th Street, New York, NY", "latLong" : { "lat" : 40.7766859, "lng" : -73.9613107 }, "days" : "Tuesdays", "start" : 1900, "end" : 2000, "type" : "T", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755acae"), "address" : "520 Park Avenue, New York, NY", "latLong" : { "lat" : 40.7639511, "lng" : -73.9697422 }, "days" : "Tuesdays", "start" : 1900, "end" : 2000, "type" : "O", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755acd7"), "address" : "420 East 76th Street, New York, NY", "latLong" : { "lat" : 40.7697328, "lng" : -73.9530611 }, "days" : "Tuesdays", "start" : 1900, "end" : 2000, "type" : "B", "interest" : "Gay, Lesbian and Bisexual" }
-{ "_id" : ObjectId("57f98d5c0a98bd271755acd9"), "address" : "420 East 76th Street, New York, NY", "latLong" : { "lat" : 40.7697328, "lng" : -73.9530611 }, "days" : "Tuesdays", "start" : 2030, "end" : 2130, "type" : "C", "interest" : "Gay, Lesbian and Bisexual" }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ace7"), "address" : "48 East 84th Street, New York, NY", "latLong" : { "lat" : 40.7790739, "lng" : -73.95927689999999 }, "days" : "Tuesdays", "start" : 1945, "end" : 2045, "type" : "B", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755acf7"), "address" : "62 East 92nd Street, New York, NY", "latLong" : { "lat" : 40.7839599, "lng" : -73.9552614 }, "days" : "Tuesdays", "start" "Tuesdays", "st : 2 2100, e" : "C", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ad34"), "address" : "413 East 79th Street, New York, NY", "latLong" : { "lat" : 40.7722008, "lng" : -73.9517118 }, "days" : "Tuesdays", "start" : 2000, "end" : 2100, "type" : "C", "interest" : "Sponsorship Workshop" }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ad3a"), "address" : "413 East 79th Street, New York, NY", "latLong" : { "lat" : 40.7722008, "lng" : -73.9517118 }, "days" : "Tuesdays", "start" : 2200, "end" : 2300, "type" : "C", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ad44"), "address" : "341 East 87th Street, New York, NY", "latLong" : { "lat" : 40.778083, "lng" : -73.9496753 }, "days" : "Tuesdays", "start" : 1915, "end" : 2015, "type" : "B", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ad46"), "address" : "341 East 87th Street, New York, NY", "latLong" : { "lat" : 40.778083, "lng" : -73.9496753 }, "days" : "Tuesdays", "start" : 2030, "end" : 2130, "type" : "C", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ad67"), "address" : "219 West 132nd Street, New York, NY", "latLong" : { "lat" : 40.8139208, "lng" : -73.9458684 }, "days" : "Tuesdays", "start" : 2000, "end" : 2100, "type" : null, "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ad75"), "address" : "2126 2nd Avenue, New York, NY", "latLong" : { "lat" : 40.7926781, "lng" : -73.9406285 }, "days" : "Tuesdays", "start" : 2000, "end" : 2100, "type" : "OD", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ad8d"), "address" : "35 Thayer Street, New York, NY", "latLong" : { "lat" : 40.862594, "lng" : -73.926186 }, "days" : "Tuesdays", "start" : 2000, "end" : 2200, "type" : "O", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ad90"), "address" : "715 West 179th Street, New York, NY", "latLong" : { "lat" : 40.849394, "lng" : -73.93841119999999 }, "days" : "Tuesdays", "start" : 1930, "end" : 2030, "type" : "BB", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ad93"), "address" : "715 West 179th Street, New York, NY", "latLong" : { "lat" : 40.849394, "lng" : -73.93841119999999 }, "days" : "Tuesdays", "start" : 2130, "end" : 2230, "type" : "C", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ad95"), "address" : "502 West165th Street, New York, NY", "latLong" : { "lat" : 40.8380556, "lng" : -73.93891789999999 }, "days" : "Tuesdays", "start" : 2000, "end" : 2100, "type" : "C", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755ada4"), "address" : "715 West 179th Street, New York, NY", "latLong" : { "lat" : 40.849394, "lng" : -73.93841119999999 }, "days" : "Tuesdays", "start" : 1930, "end" : 2030, "type" : "O", "interest" : null }
 >
 ```
 
@@ -106,28 +90,6 @@ collection.insert({
 { "_id" : ObjectId("57f98d5c0a98bd271755a903"), "address" : "49 Fulton Street, New York, NY", "latLong" : { "lat" : 40.7081354, "lng" : -74.00394519999999 }, "days" : "Fridays", "start" : 630, "end" : 730, "type" : "BB", "interest" : null }
 { "_id" : ObjectId("57f98d5c0a98bd271755a904"), "address" : "49 Fulton Street, New York, NY", "latLong" : { "lat" : 40.7081354, "lng" : -74.00394519999999 }, "days" : "Mondays", "start" : 730, "end" : 830, "type" : "S", "interest" : null }
 { "_id" : ObjectId("57f98d5c0a98bd271755a905"), "address" : "49 Fulton Street, New York, NY", "latLong" : { "lat" : 40.7081354, "lng" : -74.00394519999999 }, "days" : "Tuesdays", "start" : 730, "end" : 830, "type" : "OD", "interest" : null }
-Type "it" for more
-> it
-{ "_id" : ObjectId("57f98d5c0a98bd271755a906"), "address" : "49 Fulton Street, New York, NY", "latLong" : { "lat" : 40.7081354, "lng" : -74.00394519999999 }, "days" : "Wednesdays", "start" : 730, "end" : 830, "type" : "OD", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a907"), "address" : "49 Fulton Street, New York, NY", "latLong" : { "lat" : 40.7081354, "lng" : -74.00394519999999 }, "days" : "Thursdays", "start" : 730, "end" : 830, "type" : "OD", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a908"), "address" : "49 Fulton Street, New York, NY", "latLong" : { "lat" : 40.7081354, "lng" : -74.00394519999999 }, "days" : "Fridays", "start" : 730, "end" : 830, "type" : "B", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a909"), "address" : "49 Fulton Street, New York, NY", "latLong" : { "lat" : 40.7081354, "lng" : -74.00394519999999 }, "days" : "Sundays", "start" : 745, "end" : 845, "type" : "OD", "interest" : "Round-Robin Meeting Format" }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a90a"), "address" : "49 Fulton Street, New York, NY", "latLong" : { "lat" : 40.7081354, "lng" : -74.00394519999999 }, "days" : "Saturdays", "start" : 745, "end" : 845, "type" : "OD", "interest" : "Round-Robin Meeting Format" }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a90b"), "address" : "49 Fulton Street, New York, NY", "latLong" : { "lat" : 40.7081354, "lng" : -74.00394519999999 }, "days" : "Fridays", "start" : 1730, "end" : 1830, "type" : "B", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a90c"), "address" : "20 Cardinal Hayes Place, New York, NY", "latLong" : { "lat" : 40.7133468, "lng" : -74.0025814 }, "days" : "Fridays", "start" : 1800, "end" : 1900, "type" : "OD", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a90d"), "address" : "22 Barclay Street, New York, NY", "latLong" : { "lat" : 40.7123651, "lng" : -74.00956409999999 }, "days" : "Sundays", "start" : 1800, "end" : 1900, "type" : "BB", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a90e"), "address" : "20 Cardinal Hayes Place, New York, NY", "latLong" : { "lat" : 40.7133468, "lng" : -74.0025814 }, "days" : "Mondays", "start" : 1315, "end" : 1415, "type" : "B", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a90f"), "address" : "20 Cardinal Hayes Place, New York, NY", "latLong" : { "lat" : 40.7133468, "lng" : -74.0025814 }, "days" : "Tuesdays", "start" : 1315, "end" : 1415, "type" : "C", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a910"), "address" : "20 Cardinal Hayes Place, New York, NY", "latLong" : { "lat" : 40.7133468, "lng" : -74.0025814 }, "days" : "Wednesdays", "start" : 1315, "end" : 1415, "type" : "C", "interest" : "Promises" }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a911"), "address" : "20 Cardinal Hayes Place, New York, NY", "latLong" : { "lat" : 40.7133468, "lng" : -74.0025814 }, "days" : "Thursdays", "start" : 1315, "end" : 1415, "type" : "S", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a912"), "address" : "20 Cardinal Hayes Place, New York, NY", "latLong" : { "lat" : 40.7133468, "lng" : -74.0025814 }, "days" : "Fridays", "start" : 1315, "end" : 1415, "type" : "BB", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a913"), "address" : "22 Barclay Street, New York, NY", "latLong" : { "lat" : 40.7123651, "lng" : -74.00956409999999 }, "days" : "Thursdays", "start" : 1930, "end" : 2045, "type" : "OD", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a914"), "address" : "283 West Broadway, New York, NY", "latLong" : { "lat" : 40.7208017, "lng" : -74.0048389 }, "days" : "Wednesdays", "start" : 1900, "end" : 2000, "type" : "C", "interest" : "Mental Health Issues in Sobriety" }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a915"), "address" : "125 Barclay Street, New York, NY", "latLong" : { "lat" : 40.7145883, "lng" : -74.01295809999999 }, "days" : "Saturdays", "start" : 1400, "end" : 1515, "type" : "OD", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a916"), "address" : "49 Fulton Street, New York, NY", "latLong" : { "lat" : 40.7081354, "lng" : -74.00394519999999 }, "days" : "Tuesdays", "start" : 1800, "end" : 1900, "type" : "S", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a917"), "address" : "49 Fulton Street, New York, NY", "latLong" : { "lat" : 40.7081354, "lng" : -74.00394519999999 }, "days" : "Thursdays", "start" : 1215, "end" : 1315, "type" : "C", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a918"), "address" : "49 Fulton Street, New York, NY", "latLong" : { "lat" : 40.7081354, "lng" : -74.00394519999999 }, "days" : "Fridays", "start" : 1215, "end" : 1315, "type" : "S", "interest" : null }
-{ "_id" : ObjectId("57f98d5c0a98bd271755a919"), "address" : "49 Fulton Street, New York, NY", "latLong" : { "lat" : 40.7081354, "lng" : -74.00394519999999 }, "days" : "Mondays", "start" : 1215, "end" : 1315, "type" : "S", "interest" : "Meditation" }
 Type "it" for more
 >
 ```
