@@ -14,6 +14,7 @@ Button was pressed at Mon Nov 07 2016 07:11:00 GMT-0500 (EST)
 Button was pressed at Mon Nov 07 2016 07:11:00 GMT-0500 (EST)
 Button was pressed at Mon Nov 07 2016 07:11:01 GMT-0500 (EST)
 ```
+### Create Table Result
 ```bash
 Result {
   command: 'CREATE',
@@ -25,6 +26,9 @@ Result {
   RowCtor: null,
   rowAsArray: false,
   _getTypeParser: [Function: bound ] }
+  
+### Insert Result
+```bash  
 Result {
   command: 'INSERT',
   rowCount: 1,
@@ -37,3 +41,43 @@ Result {
   _getTypeParser: [Function: bound ] }
 ```
 
+### Query Result
+```bash
+Result {
+  command: 'SELECT',
+  rowCount: 1,
+  oid: NaN,
+  rows: [ anonymous { door_id: 0, status: false, datetime: null } ],
+  fields: 
+   [ Field {
+       name: 'door_id',
+       tableID: 16396,
+       columnID: 1,
+       dataTypeID: 21,
+       dataTypeSize: 2,
+       dataTypeModifier: -1,
+       format: 'text' },
+     Field {
+       name: 'status',
+       tableID: 16396,
+       columnID: 2,
+       dataTypeID: 16,
+       dataTypeSize: 1,
+       dataTypeModifier: -1,
+       format: 'text' },
+     Field {
+       name: 'datetime',
+       tableID: 16396,
+       columnID: 3,
+       dataTypeID: 1114,
+       dataTypeSize: 8,
+       dataTypeModifier: -1,
+       format: 'text' } ],
+  _parsers: 
+   [ [Function: parseInteger],
+     [Function: parseBool],
+     [Function: parseDate] ],
+  RowCtor: [Function: anonymous],
+  rowAsArray: false,
+  _getTypeParser: [Function: bound ] }
+```
