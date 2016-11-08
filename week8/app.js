@@ -1,6 +1,3 @@
-// PRESS YOUR LUCK button
-// https://youtu.be/fnTbO26u9bQ
-
 var pg = require('pg');
 
 // connection string
