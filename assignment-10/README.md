@@ -2,7 +2,7 @@
 1. https://data-structures-neuralism.c9users.io/assignment-10/sensor_query.js
 2. https://data-structures-neuralism.c9users.io/assignment-10/aa_query.js
 
-### Sensor JSON Output
+### sensor_output.json
 ```json
 [  
    {  
@@ -53,7 +53,7 @@
    {  
 ```
 
-### AA JSON Output
+### aa_output.json
 ```json
 [  
    {  
