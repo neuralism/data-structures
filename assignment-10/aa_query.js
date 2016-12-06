@@ -47,14 +47,16 @@ var server = http.createServer(function(request, response) {
                 }];
                 
                 // write file to JSON
-                fs.writeFileSync('aa_output.json', JSON.stringify(meetings));               
+                // fs.writeFileSync('aa_output.json', JSON.stringify(meetings));
+                response.writeHead(200, {"Content-Type": "application/json"});
+                response.end(JSON.stringify(meetings));
             }
             db.close();
         });
     });
 
-    response.writeHead(200, {"Content-Type": "text/html"});
-    response.end("Hello, world!");
+    // response.writeHead(200, {"Content-Type": "text/html"});
+    // response.end("Hello, world!");
 
 });
 
