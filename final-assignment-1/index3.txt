@@ -1,80 +1,182 @@
-;
+        ;
+        
+        function initialise() {
+            var mapOptions = { zoom: 12, center: new google.maps.LatLng(latNow, longNow) }
+            var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+            setMarkers(map, meetings);
+            console.log(meetings.length);
+        }
 
-        function makeContent(cont) {
-            var contentHolder = '<div id="content">' + '<div id="siteNotice">' + '</div>';
-            for (var i = 0; i < cont.meetingGroups.length; i++) {
-            if (i == 0) {
-                contentHolder = contentHolder + '<h2>' + 'CONTENT GOES HERE' + '</h2>';
-            } 
-                contentHolder = contentHolder + '<h1 id="firstHeading" class="firstHeading">';
-                contentHolder = contentHolder + cont.meetingGroups[i].groupInfo.meetingName + '</h1>';
+        // setMarkers runs makeContent
+        function setMarkers(map, meetings)
+        {
+            // define infoWindow
+            var infoWindow = new google.maps.InfoWindow({ maxWidth: 300 });
+            
+            // loop to plot markers
+            for (var i = 0; i < meetings.length; i++) 
+            {
+                var meeting = meetings[i];
+                var lat = meeting._id.latLong.lat;
+                var lng = meeting._id.latLong.lng;
+                var myLatLng = new google.maps.LatLng(lat, lng);
+
+                // generate content for marker
+                var windowContent = generateContent(meeting);
                 
-                for (var j = 0; j < cont.meetingGroups[i].meetingType.length; j++) {
-                    var mt, si;
-                    if (cont.meetingGroups[i].meetingType[j] == "BB") {
-                        mt = "Big Book ";
+                // plot individual marker
+                var marker = new google.maps.Marker
+                (
+                    {
+                        position: myLatLng,
+                        map: map,
+                        title: "Click for meeting info",
+                        // content of marker
+                        content: windowContent,
                     }
-                    else if (cont.meetingGroups[i].meetingType[j] == "B") {
-                        mt = "Beginners ";
+                );
+                
+                // attach mouse event listener
+                google.maps.event.addListener
+                (
+                    marker, 'click', function() 
+                    {
+                        infoWindow.setContent(this.content);
+                        infoWindow.open(map, this);
                     }
-                    else if (cont.meetingGroups[i].meetingType[j] == "C") {
-                        mt = "Closed Discussion ";
+                );
+            }
+        }
+        
+        // generate content
+        function generateContent(meeting) {
+            
+            var content = '<div class="info-window">';
+            var header = '<div class="header">' + meeting.groups[0].info.address.split(',')[0] + '</div>';
+            var close = '</div>';
+            
+            var detailsTodayStatus = false;
+            var detailsTomorrowStatus = false;
+            
+            var detailsToday = '<div class="details">';
+            for (var i = 0; i < meeting.groups[0].start.length; i++) {
+                
+                if (meeting.groups[0].start[i] > 400) {
+                    
+                    if (!detailsTodayStatus) { 
+                        detailsToday += '<div class="subheader">Meetings Today (' + dayToString(dayToday.getDay()) + ')</div>'; 
+                        detailsTodayStatus = true;
                     }
-                    else if (cont.meetingGroups[i].meetingType[j] == "S") {
-                        mt = "Step ";
-                    }
-                    else if (cont.meetingGroups[i].meetingType[j] == "T") {
-                        mt = "Tradition ";
-                    }
-                    else if (cont.meetingGroups[i].meetingType[j] == "O") {
-                        mt = "Open Meeting ";
-                    }
-                    else if (cont.meetingGroups[i].meetingType[j] == "OD") {
-                        mt = "Open Discussion ";
-                    }
-                    else {
-                        mt = "";
-                    }
-
-                    contentHolder = contentHolder + cont.meetingGroups[i].meetingStartTime[j] + ' ' + mt + '<br>';
+                    
+                    var startToday = '<div><span class="time">' + timeToString(meeting.groups[0].start[i]) + 'hrs</span>';
+                    var typeToday = '<span class="type">' + meetingType(meeting.groups[0].type[i]) + '</span></div>';
+                    var interestToday = '<span class="type">' + meetingType(meeting.groups[0].interest[i]) + '</span></div>';
+                    detailsToday += startToday + ' ' + typeToday + ' ' + interestToday;
                 }
-                contentHolder = contentHolder + '</p>';
-                contentHolder = contentHolder + '<div class="iw-bottom-gradient"></div>';
+            }            
+            detailsToday += '</div>';
+
+            var detailsTomorrow = '<div class="details">';
+            for (var k = 0; k < meeting.groups[0].start.length; k++) {
+                
+                if (meeting.groups[0].start[k] <= 400) {
+                    
+                    if (!detailsTomorrowStatus) { 
+                        detailsTomorrow += '<div class="subheader">Meetings Tomorrow (' + getTomorrow(dayToday.getDay()) + ')</div>';  
+                        detailsTomorrowStatus = true;
+                    }
+                    
+                    var startTomorrow = '<div><span class="time">' + timeToString(meeting.groups[0].start[k]) + 'hrs</span>';
+                    var typeTomorrow = '<span class="type">' + meetingType(meeting.groups[0].type[k]) + '</span></div>';
+                    var interestTomorrow = '<span class="type">' + meetingType(meeting.groups[0].interest[k]) + '</span></div>';
+                    detailsTomorrow += startTomorrow + ' ' + typeTomorrow + ' ' + interestTomorrow;
+                }
+            }            
+            detailsTomorrow += '</div>';
+
+            content += header + detailsToday + '<br />' + detailsTomorrow + close;
+    
+            return content;
+        }
+        
+        function meetingType (type) {
+            switch (type) {
+                case 'BB':
+                	return 'Big Book';
+                	break;
+                case 'B':
+                	return 'Beginners';
+                	break;
+                case 'C':
+                	return 'Closed Discussion';
+                	break;
+                case 'S':
+                	return 'Step Meeting';
+                	break;
+                case 'T':
+                	return 'Tradition';
+                	break;
+                case 'O':
+                	return 'Open Meeting';
+                	break;
+                case 'OD':
+                	return 'Open Discussion';
+                	break;
+                default:
+                	return '';
+                	break;
             }
-            return contentHolder;
+        }
+        
+        function dayToString(day) {
+            switch (day) {
+                case 0:
+                    return 'Sunday';
+                    break;
+                case 1:
+                    return 'Monday';
+                    break;                
+                case 2:
+                    return 'Tuesday';
+                    break;
+                case 3:
+                    return 'Wednesday';
+                    break;
+                case 4:
+                    return 'Thursday';
+                    break;
+                case 5:
+                    return 'Friday';
+                    break;
+                case 6:
+                    return 'Saturday';
+                    break;                
+            }
+        }
+        
+        function getTomorrow(today) {
+            if (today == 6) {
+                return dayToString(0);
+            } else {
+                return dayToString(today + 1);
+            }
+        }
+        
+        function timeToString(militaryTime) {
+            
+            var time = Number(militaryTime);
+            
+            if (time < 1000) {
+                time = '0' + time;
+            }
+            return time;
         }
 
-        function setMarkers(map, locations) {
-            // Add markers to the map
-            var infowindow = new google.maps.InfoWindow({
-                maxWidth: 200
-            });
-
-            for (var i = 0; i < locations.length; i++) {
-                var meeting = locations[i];
-                var myLatLng = new google.maps.LatLng(meeting._id.latLong[0], meeting._id.latLong[1]);
-
-                var contentWindow = makeContent(meetings[i]);
-
-
-                var marker = new google.maps.Marker({
-                    position: myLatLng,
-                    map: map,
-                    title: "Click for meeting info",
-                    content: contentWindow,
-                });
-
-                google.maps.event.addListener(marker, 'click', function() {
-                    infowindow.setContent(this.content);
-                    infowindow.open(map, this);
-                });
-            }
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
+        google.maps.event.addDomListener(window, 'load', initialise);
     </script>
 </head>
 
-<body>
+<body>  
     <div id="map-canvas"></div>
 </body>
 

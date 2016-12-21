@@ -5,6 +5,9 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>AA Meetings in Manhattan</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
+
     <style>
         html,
         body,
@@ -17,23 +20,43 @@
         #firstHeading {
             font-size: 100%;
         }
+        
+        span.time {
+            width: '200px';
+            font-family: 'Roboto Mono', sans-serif;
+            font-weight: 400;
+        }
+        
+        span.type {
+            width: '200px';
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: 400;            
+        }
+        
+        div.info-window {
+            width: '200px';
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: 700;
+        }
+        
+        div.header {
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            padding-bottom: 10px;
+        }
+        
+        div.subheader {
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: 700;
+        }
+        
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script>
-        var latNow = 40.736354;
-        var longNow = -73.999175;
-
-
-        function initialize() {
-            var mapOptions = {
-                zoom: 16,
-                center: new google.maps.LatLng(latNow, longNow)
-            }
-            var map = new google.maps.Map(document.getElementById('map-canvas'),
-                mapOptions);
-
-            setMarkers(map, meetings);
-        }
-
-        // var meetings  ;
+        // Initial latLng 
+        var dayToday = new Date();
+    
+        var latNow = 40.7803723;
+        var longNow = -73.9699639;
         var meetings = 

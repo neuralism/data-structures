@@ -1,6 +1,6 @@
 // QUERY MONGODB
 
-var dbName = 'aa_database';
+var dbName = 'aa_db';
 var collName = 'meetings';
 
 var http = require("http");
@@ -23,10 +23,12 @@ var server = http.createServer(function(req, res) {
         if (err) { return console.dir(err); }
         
         var now = new Date();
+        now.setHours(now.getHours() - 5);
+        
         var today = now.getDay();
         var tomorrow;
         
-        var curHours = String(now.getHours() - 5);
+        var curHours;
         var curMinutes;
         
         if (today == 6) { 
@@ -35,20 +37,24 @@ var server = http.createServer(function(req, res) {
             tomorrow = today + 1 
         }
         
+        // add 0 if hours is < 10;
+        if (now.getHours() < 10) {
+            curHours = '0' + now.getHours();
+        } else {
+            curHours = now.getHours();
+        }
+        
         // add 0 if minute is < 10
         if (now.getMinutes() < 10) {
             curMinutes = String('0' + now.getMinutes());
         } else {
             curMinutes = String(now.getMinutes());
         }
-    
-        var currentTime = Number(curHours + curMinutes);
-        console.log(currentTime);
 
+        var currentTime = Number(curHours + curMinutes);
         var collection = db.collection(collName);
-    
         collection.aggregate
-       ([ // start of aggregation pipeline
+        ([ // start of aggregation pipeline
        
             // match by day and time
             { 
@@ -59,13 +65,13 @@ var server = http.createServer(function(req, res) {
                         { 
                             $and: 
                             [
-                                { days : dayToString(today) } , { start: { $gte : currentTime } }
+                                { days : today } , { start: { $gte : currentTime } }
                             ]
                         },
                         { 
                             $and: 
                             [
-                                { days : dayToString(tomorrow) } , { start : { $lte: 400 } }
+                                { days : tomorrow } , { start : { $lte: 400 } }
                             ]
                         }
                         
@@ -98,15 +104,13 @@ var server = http.createServer(function(req, res) {
                         latLong : "$_id.latLong"
                     },
                     
-                    meetingGroups : 
+                    groups : 
                     { 
                         $push : 
                         {
-                            groupInfo : "$_id", days : "$days", start : "$start", type : "$type" 
-                            
+                            info : "$_id", days : "$days", start : "$start", type : "$type", interest: '$interest'
                         }
                     }
-                    
                 }
             }            
         ])
@@ -116,7 +120,6 @@ var server = http.createServer(function(req, res) {
             else {
                 res.writeHead(200, {'content-type': 'text/html'});
                 res.write(index1);
-                
                 res.write(JSON.stringify(docs));
                 // res.end();
                 res.end(index3);
@@ -127,30 +130,3 @@ var server = http.createServer(function(req, res) {
 });
 
 server.listen(process.env.PORT);
-
-function dayToString (day) {
-    
-    switch (day) {
-        case 0:
-            return 'Sundays';
-            break;
-        case 1:
-            return 'Mondays';
-            break;                
-        case 2:
-            return 'Tuesdays';
-            break;
-        case 3:
-            return 'Wednesdays';
-            break;
-        case 4:
-            return 'Thursdays';
-            break;
-        case 5:
-            return 'Fridays';
-            break;
-        case 6:
-            return 'Saturdays';
-            break;                
-    }
-}
