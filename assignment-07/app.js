@@ -10,6 +10,7 @@ var conString = "postgres://" + un + ":" + pw + "@" + ep + "/" + db;
 var createTableQuery = "CREATE TABLE doorstatus (door_id smallint, status boolean, datetime timestamp);"
 var insertIntoQuery = "INSERT INTO doorstatus VALUES (0, FALSE, DEFAULT);"
 var query = "SELECT * FROM doorstatus;"
+// var query = "DELETE FROM doorstatus;" // Clear all rows in the database.
 // var complexQuery = "SELECT sum(amount) as total FROM wham GROUP BY whammy;"
 
 pg.connect(conString, function(err, client, done) {

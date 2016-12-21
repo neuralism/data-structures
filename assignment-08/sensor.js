@@ -20,7 +20,7 @@ five.Board().on('ready', function() {
     openStatus = !openStatus;
 
     // setup insert
-    var insertIntoQuery = 'INSERT INTO doorstatus VALUES (' + door_id + ', ' + openStatus + ', DEFAULT);'
+    var insertIntoQuery = 'INSERT INTO doorstatus VALUES (' + door_id + ', ' + openStatus + ', CURRENT_TIMESTAMP);'
 
     // insert query
     pg.connect(conString, function(err, client, done) {
