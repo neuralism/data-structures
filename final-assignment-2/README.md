@@ -1,8 +1,8 @@
 # Sensor Project
 
-[![](image-1.jpg)]
+![](image-1.jpg)
 
-[![](image-2.jpg)]
+![](image-2.jpg)
 
 [Video](https://vimeo.com/196513059)
 
