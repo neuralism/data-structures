@@ -4,6 +4,8 @@
 
 ![](image-2.png)
 
+I changed the datatype for days of the week to an interger because I feel they would perform better than strings. Idealy, I would prefer every piece of data be a number so that whatever that gets requested and sent over be as small as possible. How the data gets interpreted or expanded into actual content can be dealt with later snice that is the least 'costly' part of the process.  
+
 Mongo Structure
 ```
 collection.insert({
@@ -75,6 +77,4 @@ Query Result Sample
 	}
 ]
 
-
 ```
-
